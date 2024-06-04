@@ -1,13 +1,46 @@
-import {Container,Typography} from "@mui/material";
+import {Container,Typography,AppBar} from "@mui/material";
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+import MiniDrawer from "./sidebar";
 
 
-function App(){
+export default function App(){
     return (
     <Container>
-        <Typography>Hello World</Typography>
+        <MiniDrawer></MiniDrawer>
     </Container>
     );
     
 }
 
-export default App
+
+
+function MainNavbar() {
+  return (
+    <Box sx={{flexGrow : 1}}>
+      <AppBar position="fixed">
+        <Typography>
+              The site is still in alpha phase. please report any bug that you found
+        </Typography>
+        <Toolbar>
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            sx={{ mr: 2 }}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            News
+          </Typography>
+          <Button color="inherit">Login</Button>
+        </Toolbar>
+      </AppBar>
+    </Box>
+  );
+}
