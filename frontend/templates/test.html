@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html data-theme="{{Theme}}">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code-cave</title>
+    <script src="/node/axios/dist/axios.js"></script>
+</head>
+<body>
+
+<!--cdn-->
+<link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+<script src="https://cdn.tailwindcss.com"></script>
+    <!--navbar-->
+    <div class="navbar bg-base-100">
+      <div class="navbar-start">
+        
+        <!--a-- class="btn btn-ghost text-xl">daisyUI</!--a-->
+        <label for="my-drawer" class="btn btn-primary drawer-button">
+          <svg xmlns="http://www.w3.org/2000/svg" height="14" width="12.25" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg>
+
+        </label>
+      </div>
+      <div class="navbar-center hidden lg:flex">
+        <!-- Middle portion of the navbar -->
+        <!--timeline-->
+        <ul class="steps">
+          <li class="step step-primary"></li>
+          <li class="step step-primary"></li>
+          <li class="step"></li>
+          <li class="step"></li>
+          <li class="step"></li>
+          <li class="step"></li>
+          <li class="step"></li>
+          <li class="step"></li>
+          <li class="step"></li>
+          <li class="step"></li>
+        </ul>
+        <!--end timeline-->
+      </div>
+      <div class="navbar-end">
+        <div class="dropdown dropdown-end">
+          <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
+            <div class="indicator">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+              <span class="badge badge-sm indicator-item">8</span>
+            </div>
+          </div>
+          <div tabindex="0" class="mt-3 z-[1] card card-compact dropdown-content w-52 bg-base-100 shadow">
+            <div class="card-body">
+              <span class="font-bold text-lg">8 Items</span>
+              <span class="text-info">Subtotal: $999</span>
+              <div class="card-actions">
+                <button class="btn btn-primary btn-block">View cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="dropdown dropdown-end">
+          <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
+            <div class="w-10 rounded-full">
+              <img alt="Tailwind CSS Navbar component" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+            </div>
+          </div>
+          <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+            <li>
+              <a class="justify-between">
+                {{test}}
+                <span class="badge">New</span>
+              </a>
+            </li>
+            <li><a onclick="Settings.showModal()">Settings</a></li>
+            <li><a>Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+      <!--end navbar-->
+      <!--Drawyer-->
+      <div class="drawer">
+        <input id="my-drawer" type="checkbox" class="drawer-toggle" />
+        <div class="drawer-content">
+          <!--Page Content here-->
+
+          
+          
+          <div class="join" style="padding: 10px;">
+            <button id="Run_code" class="btn join-item">
+              <svg xmlns="http://www.w3.org/2000/svg" height="14" width="10.5" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#2ec27e" d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>
+              Run
+            </button>
+            <button class="btn join-item">
+              <svg xmlns="http://www.w3.org/2000/svg" height="14" width="14" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#3366cc" d="M128 64c0-35.3 28.7-64 64-64H352V128c0 17.7 14.3 32 32 32H512V448c0 35.3-28.7 64-64 64H192c-35.3 0-64-28.7-64-64V336H302.1l-39 39c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l80-80c9.4-9.4 9.4-24.6 0-33.9l-80-80c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l39 39H128V64zm0 224v48H24c-13.3 0-24-10.7-24-24s10.7-24 24-24H128zM512 128H384V0L512 128z"/></svg>
+              Submit
+            </button>
+            <!--button-- class="btn join-item">Button</!--button-->
+          </div>
+
+
+          <div class="flex flex-col w-full lg:flex-row">
+
+            <div class=" flex-grow w-1/2 card bg-base-300 rounded-box place-items-center" style="height:calc(75vh);">{{Question_screen}}</div> 
+            <div class="divider h-full lg:divider-horizontal">OR</div> 
+            <div id="code-editor" class=" flex-grow w-1/2  place-items-center">
+                <!--textarea  class="h-full w-full">{{BoilerPlate_code}}</!--textarea-->
+            </div>
+
+
+
+
+
+            <!--Page Content End Here-->      
+          </div>
+        </div> 
+        <div class="drawer-side">
+          <label for="my-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
+          <ul class="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+            <!-- Sidebar content here -->
+            <div class="join join-vertical w-full">
+              
+              <!--Speach component-->
+              <div class="collapse collapse-arrow join-item border border-base-300">
+                <input type="radio" name="my-accordion-4"  checked="checked" /> 
+                <div class="collapse-title text-xl font-medium">
+                  Voice Channel
+                </div>
+                <!--box-->
+                <div class="collapse-content"> 
+                  <div class="flex-grow card bg-base-300 rounded-box">
+                    <!--avatars-->
+                    <div class="avatar" style="padding: 8px;">
+                      <div class="w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                        <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                      </div>
+                    </div>
+                    <!--end avatar-->
+                  </div>
+                  <div class="join" style="padding: 2px;column-gap:6px;">
+                    <button class="btn btn-neutral">Join</button>
+                    <!--Input-->
+                    <label class="swap">
+                      <input type="checkbox" />
+                      <svg class="swap-on fill-current" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.84 14,18.7V20.77C18,19.86 21,16.28 21,12C21,7.72 18,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16C15.5,15.29 16.5,13.76 16.5,12M3,9V15H7L12,20V4L7,9H3Z"/></svg>
+                      <svg class="swap-off fill-current" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path d="M3,9H7L12,4V20L7,15H3V9M16.59,12L14,9.41L15.41,8L18,10.59L20.59,8L22,9.41L19.41,12L22,14.59L20.59,16L18,13.41L15.41,16L14,14.59L16.59,12Z"/></svg>
+                    </label>
+                    <!--end input-->
+                    <!--Output-->
+                    <label class="swap">
+                      <input type="checkbox" />
+                      <svg class="swap-on fill-current" xmlns="http://www.w3.org/2000/svg" height="32" width="32" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M192 0C139 0 96 43 96 96V256c0 53 43 96 96 96s96-43 96-96V96c0-53-43-96-96-96zM64 216c0-13.3-10.7-24-24-24s-24 10.7-24 24v40c0 89.1 66.2 162.7 152 174.4V464H120c-13.3 0-24 10.7-24 24s10.7 24 24 24h72 72c13.3 0 24-10.7 24-24s-10.7-24-24-24H216V430.4c85.8-11.7 152-85.3 152-174.4V216c0-13.3-10.7-24-24-24s-24 10.7-24 24v40c0 70.7-57.3 128-128 128s-128-57.3-128-128V216z"/></svg>
+                      <svg class="swap-off fill-current" xmlns="http://www.w3.org/2000/svg" height="32" width="32" viewBox="0 0 640 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L472.1 344.7c15.2-26 23.9-56.3 23.9-88.7V216c0-13.3-10.7-24-24-24s-24 10.7-24 24v40c0 21.2-5.1 41.1-14.2 58.7L416 300.8V96c0-53-43-96-96-96s-96 43-96 96v54.3L38.8 5.1zm362.5 407l-43.1-33.9C346.1 382 333.3 384 320 384c-70.7 0-128-57.3-128-128v-8.7L144.7 210c-.5 1.9-.7 3.9-.7 6v40c0 89.1 66.2 162.7 152 174.4V464H248c-13.3 0-24 10.7-24 24s10.7 24 24 24h72 72c13.3 0 24-10.7 24-24s-10.7-24-24-24H344V430.4c20.4-2.8 39.7-9.1 57.3-18.2z"/></svg>
+                      
+                    </label>
+                    <!--end output-->
+                  </div>
+                  <!--End Box-->
+                </div>
+              </div>
+              <div class="collapse collapse-arrow join-item border border-base-300">
+                <input type="radio" name="my-accordion-4" /> 
+                <div class="collapse-title text-xl font-medium">
+                  Chat
+                </div>
+                <div class="collapse-content"> 
+                  <div class="flex-grow card bg-base-300 rounded-box">
+                    <!--Chat-->
+                    <div class="chat chat-start">
+                      <div class="chat-image avatar">
+                        <div class="w-10 rounded-full">
+                          <img alt="Tailwind CSS chat bubble component" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                        </div>
+                      </div>
+                      <div class="chat-header">
+                        Obi-Wan Kenobi
+                      </div>
+                      <div class="chat-bubble">You were the Chosen One!</div>
+                    </div>
+                    <div class="chat chat-end">
+                      <div class="chat-image avatar">
+                        <div class="w-10 rounded-full">
+                          <img alt="Tailwind CSS chat bubble component" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                        </div>
+                      </div>
+                      <div class="chat-header">
+                        Anakin
+                      </div>
+                      <div class="chat-bubble">I hate you!</div>
+                    </div>
+                    
+                </div>
+                <!--Reply-->
+                <div class="join" style="padding: 5px;">
+                  <input type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
+                  <button class="btn btn-neutral">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="14" width="14" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#74C0FC" d="M16.1 260.2c-22.6 12.9-20.5 47.3 3.6 57.3L160 376V479.3c0 18.1 14.6 32.7 32.7 32.7c9.7 0 18.9-4.3 25.1-11.8l62-74.3 123.9 51.6c18.9 7.9 40.8-4.5 43.9-24.7l64-416c1.9-12.1-3.4-24.3-13.5-31.2s-23.3-7.5-34-1.4l-448 256zm52.1 25.5L409.7 90.6 190.1 336l1.2 1L68.2 285.7zM403.3 425.4L236.7 355.9 450.8 116.6 403.3 425.4z"/></svg>
+                  </button>
+                </div>
+                <!--Reply end-->
+                <!--Chat End-->
+              </div>
+              </div>
+            </div>
+            <!--Sidebar content ends here-->
+          </ul>
+          
+        </div>
+      </div>
+      <!--end drawyer-->
+      
+      
+      <!-- Open the modal using ID.showModal() method -->
+      <button class="btn" onclick="Settings.showModal()">open modal</button>
+
+      <dialog id="Settings" class="modal">
+        <div class="modal-box relative w-32" style="max-width:48rem">
+          <h3 class="font-bold text-lg">Setting Menu</h3>
+          <p class="py-4">Edit Settings</p>
+          <!-- website Theme-->
+          <span class="label-text">Pick Theme</span>
+          <div class="join">
+            <input type="radio" name="theme-buttons" class="btn theme-controller join-item" aria-label="light" value="light"/>
+            <input type="radio" name="theme-buttons" class="btn theme-controller join-item" aria-label="dark" value="dark"/>
+            <input type="radio" name="theme-buttons" class="btn theme-controller join-item" aria-label="winter" value="winter"/>
+            <input type="radio" name="theme-buttons" class="btn theme-controller join-item" aria-label="cupcake" value="cupcake"/>
+            <input type="radio" name="theme-buttons" class="btn theme-controller join-item" aria-label="Retro" value="retro"/>
+            <input type="radio" name="theme-buttons" class="btn theme-controller join-item" aria-label="valentine" value="valentine"/>
+            <input type="radio" name="theme-buttons" class="btn theme-controller join-item" aria-label="aqua" value="aqua"/>
+            <input type="radio" name="theme-buttons" class="btn theme-controller join-item" aria-label="coffee" value="coffee"/>
+            <input type="radio" name="theme-buttons" class="btn theme-controller join-item" aria-label="dracula" value="dracula"/>
+          </div>
+          <br>
+          <!--End website Theme-->
+          <!--Editor Theme-->
+
+          <script src="/node/monaco-themes/dist/monaco-themes.js"></script>
+
+          <script>
+
+            //parsing and activating themes
+            function Change_editor_theme(theme_name){
+              console.log("Changing theme to:"+theme_name)
+              fetch('/node/monaco-themes/themes/'+theme_name)
+              .then(response=>response.json())
+              .then(response_theme=>{
+                console.log(response_theme)
+                monaco.editor.defineTheme('customtheme',response_theme)
+                monaco.editor.setTheme('customtheme')
+              })
+              .catch(error=>console.log(error))
+            } 
+
+          </script>
+          <span class="label-text">Pick Editor Theme</span>
+          <div class="join">
+            <input onclick="monaco.editor.setTheme('vs')" type="radio" name="editor-theme-buttons" class="btn join-item" aria-label="light" value="light"/>
+            <input onclick="monaco.editor.setTheme('vs-dark')" type="radio" name="editor-theme-buttons" class="btn join-item" aria-label="dark" value="dark"/>
+            <input onclick="Change_editor_theme(this.value)" type="radio" name="editor-theme-buttons" class="btn join-item" aria-label="Active4D" value="Active4D.json"/>
+            <input onclick="Change_editor_theme(this.value)" type="radio" name="editor-theme-buttons" class="btn join-item" aria-label="Katzenmilch" value="Katzenmilch.json"/>
+            <input onclick="Change_editor_theme(this.value)" type="radio" name="editor-theme-buttons" class="btn join-item" aria-label="Cobalt" value="Cobalt.json"/>
+            <input onclick="Change_editor_theme(this.value)" type="radio" name="editor-theme-buttons" class="btn join-item" aria-label="monoindustrial" value="monoindustrial.json"/>
+            <input onclick="Change_editor_theme(this.value)" type="radio" name="editor-theme-buttons" class="btn join-item" aria-label="Blackboard" value="Blackboard.json"/>
+            <input onclick="Change_editor_theme(this.value)" type="radio" name="editor-theme-buttons" class="btn join-item" aria-label="Dracula" value="Dracula.json"/>
+            
+          </div>
+          <!--End editor Theme-->
+          <div class="modal-action">
+            <form method="dialog">
+              <!-- if there is a button in form, it will close the modal -->
+              <button class="btn">Close</button>
+              <button class="btn btn-primary">Save</button>
+            </form>
+          </div>
+        </div>
+      </dialog>
+      <!--End Modal Class-->
+
+      
+      
+      
+
+
+        <script src="/node/monaco-editor/min/vs/loader.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<!--scripts src-->
+<script src="/static/javascript/code-cave.js"></script>
+</body>
+</html>
