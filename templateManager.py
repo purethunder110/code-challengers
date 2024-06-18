@@ -13,13 +13,13 @@ app.mount("/node",StaticFiles(directory="frontend/node_modules/"),name="node_mod
 app.mount("/static",StaticFiles(directory="frontend/static/"),name="static")
 
 
-@app.get("/test/{shareID}",response_class=HTMLResponse)
+@app.get("/session/{shareID}",response_class=HTMLResponse)
 async def code_cave_center(request:Request,shareID):
     message={
         "Theme":"valentine",
         "test":shareID,
         "Question_screen":"this is the test content",
-        "BoilerPlate_code":"console.log('code here')"
+        "code_data":"console.log('code here')"
     }
 
     #return html

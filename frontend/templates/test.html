@@ -24,9 +24,9 @@
       <div class="navbar-center hidden lg:flex">
         <!-- Middle portion of the navbar -->
         <!--timeline-->
-        <ul class="steps">
+        <ul id="question-timeline" class="steps">
           <li class="step step-primary"></li>
-          <li class="step step-primary"></li>
+          <li class="step"></li>
           <li class="step"></li>
           <li class="step"></li>
           <li class="step"></li>
@@ -89,22 +89,22 @@
               <svg xmlns="http://www.w3.org/2000/svg" height="14" width="10.5" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#2ec27e" d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg>
               Run
             </button>
-            <button class="btn join-item">
+            <button id="submit_code" class="btn join-item">
               <svg xmlns="http://www.w3.org/2000/svg" height="14" width="14" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#3366cc" d="M128 64c0-35.3 28.7-64 64-64H352V128c0 17.7 14.3 32 32 32H512V448c0 35.3-28.7 64-64 64H192c-35.3 0-64-28.7-64-64V336H302.1l-39 39c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l80-80c9.4-9.4 9.4-24.6 0-33.9l-80-80c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l39 39H128V64zm0 224v48H24c-13.3 0-24-10.7-24-24s10.7-24 24-24H128zM512 128H384V0L512 128z"/></svg>
               Submit
             </button>
             <!--button-- class="btn join-item">Button</!--button-->
           </div>
-
-
+          <!--main content-->
+          <input type="hidden" value="{{code_data}}" id="code_data">
           <div class="flex flex-col w-full lg:flex-row">
+            <div id="Question-box" class="flex-grow w-1/2 card bg-base-300 rounded-box place-items-center" style="height:calc(75vh);">
 
-            <div class=" flex-grow w-1/2 card bg-base-300 rounded-box place-items-center" style="height:calc(75vh);">{{Question_screen}}</div> 
+              {{Question_screen}}
+            </div> 
             <div class="divider h-full lg:divider-horizontal">OR</div> 
-            <div id="code-editor" class=" flex-grow w-1/2  place-items-center">
-                <!--textarea  class="h-full w-full">{{BoilerPlate_code}}</!--textarea-->
-            </div>
-
+            <div id="code-editor" class=" flex-grow w-1/2  place-items-center"></div>
+            <!--main content ends-->
 
 
 
@@ -211,6 +211,7 @@
       <!-- Open the modal using ID.showModal() method -->
       <button class="btn" onclick="Settings.showModal()">open modal</button>
 
+      <script src="/static/javascript/settingMenu.js"></script>
       <dialog id="Settings" class="modal">
         <div class="modal-box relative w-32" style="max-width:48rem">
           <h3 class="font-bold text-lg">Setting Menu</h3>
@@ -232,24 +233,7 @@
           <!--End website Theme-->
           <!--Editor Theme-->
 
-          <script src="/node/monaco-themes/dist/monaco-themes.js"></script>
-
-          <script>
-
-            //parsing and activating themes
-            function Change_editor_theme(theme_name){
-              console.log("Changing theme to:"+theme_name)
-              fetch('/node/monaco-themes/themes/'+theme_name)
-              .then(response=>response.json())
-              .then(response_theme=>{
-                console.log(response_theme)
-                monaco.editor.defineTheme('customtheme',response_theme)
-                monaco.editor.setTheme('customtheme')
-              })
-              .catch(error=>console.log(error))
-            } 
-
-          </script>
+          <!--script src="/node/monaco-themes/dist/monaco-themes.js"></!--script-->
           <span class="label-text">Pick Editor Theme</span>
           <div class="join">
             <input onclick="monaco.editor.setTheme('vs')" type="radio" name="editor-theme-buttons" class="btn join-item" aria-label="light" value="light"/>
