@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme="{{Theme}}">
+<html>
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +11,7 @@
 <!--cdn-->
 <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.2/dist/full.min.css" rel="stylesheet" type="text/css" />
 <script src="https://cdn.tailwindcss.com"></script>
+
     <!--navbar-->
     <div class="navbar bg-base-100">
       <div class="navbar-start">
@@ -95,12 +96,15 @@
             </button>
             <!--button-- class="btn join-item">Button</!--button-->
           </div>
+          
           <!--main content-->
           <input type="hidden" value="{{code_data}}" id="code_data">
           <div class="flex flex-col w-full lg:flex-row">
-            <div id="Question-box" class="flex-grow w-1/2 card bg-base-300 rounded-box place-items-center" style="height:calc(75vh);">
-
-              {{Question_screen}}
+            <div class="flex-grow w-1/2 card bg-base-300 rounded-box place-items-center" style="height:calc(75vh);">
+              <div id="Question-box">{{Question_screen}}</div>
+              <div id="loading-question" class="items-center justify-center" style="display:none;">
+                <span class="loading loading-bars loading-lg"></span>
+              </div>
             </div> 
             <div class="divider h-full lg:divider-horizontal">OR</div> 
             <div id="code-editor" class=" flex-grow w-1/2  place-items-center"></div>
@@ -219,15 +223,15 @@
           <!-- website Theme-->
           <span class="label-text">Pick Theme</span>
           <div class="join">
-            <input type="radio" name="theme-buttons" class="btn theme-controller join-item" aria-label="light" value="light"/>
-            <input type="radio" name="theme-buttons" class="btn theme-controller join-item" aria-label="dark" value="dark"/>
-            <input type="radio" name="theme-buttons" class="btn theme-controller join-item" aria-label="winter" value="winter"/>
-            <input type="radio" name="theme-buttons" class="btn theme-controller join-item" aria-label="cupcake" value="cupcake"/>
-            <input type="radio" name="theme-buttons" class="btn theme-controller join-item" aria-label="Retro" value="retro"/>
-            <input type="radio" name="theme-buttons" class="btn theme-controller join-item" aria-label="valentine" value="valentine"/>
-            <input type="radio" name="theme-buttons" class="btn theme-controller join-item" aria-label="aqua" value="aqua"/>
-            <input type="radio" name="theme-buttons" class="btn theme-controller join-item" aria-label="coffee" value="coffee"/>
-            <input type="radio" name="theme-buttons" class="btn theme-controller join-item" aria-label="dracula" value="dracula"/>
+            <input type="radio" onclick="change_theme(this.value)" name="theme-buttons" class="btn theme-controller join-item" aria-label="light" value="light"/>
+            <input type="radio" onclick="change_theme(this.value)" name="theme-buttons" class="btn theme-controller join-item" aria-label="dark" value="dark"/>
+            <input type="radio" onclick="change_theme(this.value)" name="theme-buttons" class="btn theme-controller join-item" aria-label="winter" value="winter"/>
+            <input type="radio" onclick="change_theme(this.value)" name="theme-buttons" class="btn theme-controller join-item" aria-label="cupcake" value="cupcake"/>
+            <input type="radio" onclick="change_theme(this.value)" name="theme-buttons" class="btn theme-controller join-item" aria-label="Retro" value="retro"/>
+            <input type="radio" onclick="change_theme(this.value)" name="theme-buttons" class="btn theme-controller join-item" aria-label="valentine" value="valentine"/>
+            <input type="radio" onclick="change_theme(this.value)" name="theme-buttons" class="btn theme-controller join-item" aria-label="aqua" value="aqua"/>
+            <input type="radio" onclick="change_theme(this.value)" name="theme-buttons" class="btn theme-controller join-item" aria-label="coffee" value="coffee"/>
+            <input type="radio" onclick="change_theme(this.value)" name="theme-buttons" class="btn theme-controller join-item" aria-label="dracula" value="dracula"/>
           </div>
           <br>
           <!--End website Theme-->
@@ -251,7 +255,7 @@
             <form method="dialog">
               <!-- if there is a button in form, it will close the modal -->
               <button class="btn">Close</button>
-              <button class="btn btn-primary">Save</button>
+              <!--button class="btn btn-primary">Save</button-->
             </form>
           </div>
         </div>
@@ -264,7 +268,7 @@
 
 
         <script src="/node/monaco-editor/min/vs/loader.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="/node/requirejs/require.js"></script>
 
 
 <!--scripts src-->
