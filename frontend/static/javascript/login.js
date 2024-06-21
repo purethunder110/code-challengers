@@ -8,18 +8,23 @@ document.addEventListener("DOMContentLoaded",function(){
 
 
 document.getElementById("loginbtn").addEventListener('click',function(){
-    var loginID=document.getElementById("Login-ID").value
-    var emaiID=document.getElementById("Password").value
-    console.log(loginID,emaiID)
+    var emaiID=document.getElementById("Login-ID").value
     var valid=email_validation(emaiID)
+
     if (valid){
-        axios
+        var Password=document.getElementById("Password").value
+        var message={
+            "EmailID":"aaa",
+            "Password":Password
+        }
+        axios.post("/auth/login/",message)
+        .then(response=>console.log(response))
+        .catch(error=>console.log(error))
     }
 })
 
 function email_validation(email_value){
-    var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-
+    var validRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
     if (email_value.match(validRegex)){
         return true
     }

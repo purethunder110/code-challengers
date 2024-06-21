@@ -12,7 +12,6 @@ app.mount("/node",StaticFiles(directory="frontend/node_modules/"),name="node_mod
 app.mount("/static",StaticFiles(directory="frontend/static/"),name="static")
 
 
-
 @app.get("/session/{shareID}",response_class=HTMLResponse)
 async def code_cave_center(request:Request,shareID):
     message={
