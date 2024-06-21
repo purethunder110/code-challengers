@@ -1,6 +1,6 @@
-from templateManager import app
-from datamodel_control import source_Code
-import time
+from .authentication import app
+from .datamodel_control import source_Code
+
 
 #for recieving the code
 @app.post("/api/code-reciever/")

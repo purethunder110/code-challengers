@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded',(event)=>{
         //ADDING ASYNC DELAY SO THAT THE EDITOR CAN LOAD BEFORE CHANGING SAVED THEME
         setTimeout(function(){
             Change_editor_theme(editortheme,GlobalEditorObject)
-        }, 50);
+        }, 200);
     }
 });
 

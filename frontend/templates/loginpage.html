@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<HTML>
+<HEAD>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/node/axios/dist/axios.js"></script>
+    <TITLE>this is login website</TITLE>
+    <!--cdn tailwind config -->
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              
+            }
+          }
+        }
+      </script>
+      <!--cdn tailwind config end-->
+</HEAD>
+<BODY style="background-size:contain;background-repeat:no-repeat;background-size: 100%;background-image:url('https://images.unsplash.com/photo-1549880338-65ddcdfd017b?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+  <!--url('https://w.wallhaven.cc/full/d6/wallhaven-d6grd3.jpg');"-->
+  <div class="h-screen flex items-center justify-center">
+    <div class="grid card bg-base-300 rounded-box place-items-center opacity-60" style="height:calc(65vh);width:calc(60vh)">
+      <!--login content-->
+      <div id="forms">
+        <label class="form-control w-full max-w-xs">
+          <div class="label">
+            <span class="label-text">Email</span>
+          </div>
+          <input id="Login-ID" type="text" placeholder="Enter Email" class="input input-bordered w-full max-w-xs" />
+        </label>
+        <label class="form-control w-full max-w-xs">
+          <div class="label">
+            <span class="label-text">Password</span>
+          </div>
+          <input id="Password" type="Password" placeholder="Enter Password" class="input input-bordered w-full max-w-xs" />
+        </label>
+        <div class="py-5">
+          <button id="loginbtn" class="btn btn-primary">Login</button>
+        </div>
+      </div>
+    <p>
+        Photo by <a href="https://unsplash.com/@z734923105?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Jerry Zhang</a> on <a href="https://unsplash.com/photos/aerial-photography-of-mountain-ranges-during-daytime-Y8lCoTRgHPE?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+    </p>
+    <!--end login content-->
+    </div>
+  </div>
+  <!--error handle-->
+  <div id="error-handle" class="toast">
+    <div class="alert alert-error">
+      <span>New message arrived.</span>
+    </div>
+  </div>
+  <!--end error handle-->
+  <script src="/static/javascript/login.js"></script>
+
+</BODY>
+</HTML>
