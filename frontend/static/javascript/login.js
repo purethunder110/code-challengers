@@ -8,18 +8,27 @@ document.addEventListener("DOMContentLoaded",function(){
 
 
 document.getElementById("loginbtn").addEventListener('click',function(){
-    var emaiID=document.getElementById("Login-ID").value
-    var valid=email_validation(emaiID)
+    var emailID=document.getElementById("Login-ID").value
+    var valid=email_validation(emailID)
 
     if (valid){
         var Password=document.getElementById("Password").value
+        if (Password==null || Password==""){
+            error_message("Please Enter a Password")
+            return;
+        }
         var message={
-            "EmailID":"aaa",
+            "EmailID":emailID,
             "Password":Password
         }
         axios.post("/auth/login/",message)
         .then(response=>console.log(response))
-        .catch(error=>console.log(error))
+        .catch(error=>{
+            var status=error.response.status
+            if (status==='422'){
+                error_message("Error Occured. Please reload and try again")
+            }
+        })
     }
 })
 
@@ -69,3 +78,4 @@ function error_message(message){
     }, 3000);
     
 }
+

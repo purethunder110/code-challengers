@@ -11,7 +11,7 @@ templates=Jinja2Templates(directory="frontend/templates")
 app.mount("/node",StaticFiles(directory="frontend/node_modules/"),name="node_modules")
 app.mount("/static",StaticFiles(directory="frontend/static/"),name="static")
 
-
+#main coding page
 @app.get("/session/{shareID}",response_class=HTMLResponse)
 async def code_cave_center(request:Request,shareID):
     message={
@@ -28,6 +28,7 @@ async def code_cave_center(request:Request,shareID):
         context=message
     )
 
+#login page
 @app.get("/account/login",response_class=HTMLResponse)
 async def login(request:Request):
     message={}
@@ -37,3 +38,17 @@ async def login(request:Request):
         name="loginpage.html",
         context=message
     )
+
+#index page
+@app.get("/")
+async def index():
+    return "this is tehe index page"
+
+#
+@app.get("/home/")
+async def homepage():
+    return "this is the homepage after login"
+
+@app.get("/account/signup")
+async def signup():
+    return "this is going to be signup"
