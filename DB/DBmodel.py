@@ -1,9 +1,9 @@
 from sqlalchemy import Column,Text,String,Boolean,DateTime,Integer
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import declarative_base,relationship
-from DBEngine import engine
+from .DBEngine import engine
 
-import uuid
+#import uuid
 
 BASE=declarative_base()
 
@@ -19,7 +19,6 @@ class USERDATA(BASE):
 
 class SESSION(BASE):
     __tablename__="SESSIONDATA"
-
 
     id=Column(Integer,primary_key=True,autoincrement=True)
     sessionID=Column(UUID(as_uuid=True),nullable=False)

@@ -20,23 +20,35 @@
 <BODY style="background-size:contain;background-repeat:no-repeat;background-size: 100%;background-image:url('https://images.unsplash.com/photo-1549880338-65ddcdfd017b?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
   <!--url('https://w.wallhaven.cc/full/d6/wallhaven-d6grd3.jpg');"-->
   <div class="h-screen flex items-center justify-center">
-    <div class="grid card bg-base-300 rounded-box place-items-center opacity-60" style="height:calc(65vh);width:calc(60vh)">
+    <div class="grid card bg-base-300 rounded-box place-items-center opacity-60" style="height:calc(60vh);width:calc(50vh)">
       <!--login content-->
       <div id="forms">
         <label class="form-control w-full max-w-xs">
           <div class="label">
-            <span class="label-text">Email</span>
+            <span class="label-text">Username</span>
           </div>
-          <input id="Login-ID" type="text" placeholder="Enter Email" class="input input-bordered w-full max-w-xs" />
+          <input id="Username-ID" type="text" placeholder="Enter Username" class="input input-bordered w-full max-w-xs" />
         </label>
         <label class="form-control w-full max-w-xs">
+            <div class="label">
+              <span class="label-text">Email</span>
+            </div>
+            <input id="Email-ID" type="text" placeholder="Enter Email" class="input input-bordered w-full max-w-xs" />
+          </label>
+        <label class="form-control w-full max-w-xs">
           <div class="label">
-            <span class="label-text">Password</span>
+            <span class="label-text">Enter Password</span>
           </div>
-          <input id="Password" type="Password" placeholder="Enter Password" class="input input-bordered w-full max-w-xs" />
+          <input id="E-Password" type="Password" placeholder="Enter Password" class="input input-bordered w-full max-w-xs" />
         </label>
+        <label class="form-control w-full max-w-xs">
+            <div class="label">
+              <span class="label-text">Confirm Password</span>
+            </div>
+            <input id="C-Password" type="Password" placeholder="Confirm Password" class="input input-bordered w-full max-w-xs" />
+          </label>
         <div class="py-5">
-          <button id="loginbtn" class="btn btn-primary">Login</button>
+          <button id="Signupbtn" class="btn btn-primary">Sign Up</button>
         </div>
       </div>
     <p>
@@ -52,7 +64,7 @@
     </div>
   </div>
   <!--end error handle-->
-  <script src="/static/javascript/login.js"></script>
+  <script src="/static/javascript/signup.js"></script>
 
 </BODY>
 </HTML>

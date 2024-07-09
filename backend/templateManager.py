@@ -44,11 +44,17 @@ async def login(request:Request):
 async def index():
     return "this is tehe index page"
 
-#
+#page after loging in
 @app.get("/home/")
 async def homepage():
     return "this is the homepage after login"
 
-@app.get("/account/signup")
-async def signup():
-    return "this is going to be signup"
+#signup page
+@app.get("/account/signup",response_class=HTMLResponse)
+async def signup(request:Request):
+    message={}
+    return templates.TemplateResponse(
+        request=request,
+        name="signuppage.html",
+        context=message
+    )
