@@ -4,6 +4,7 @@ from sqlalchemy.orm import declarative_base,relationship
 from .DBEngine import engine
 
 #import uuid
+from datetime import datetime,timedelta
 
 BASE=declarative_base()
 
@@ -16,6 +17,9 @@ class USERDATA(BASE):
     password=Column(Text)
     verify=Column(Boolean,unique=False,default=False)
     TwoFA=Column(Boolean,unique=False,default=False)
+    session_token=Column(UUID(as_uuid=True),nullable=True)
+    session_expire=Column(DateTime,default=datetime.now()+timedelta(days=14))
+    user=relationship("USERDATA", back_populates="host")
 
 class SESSION(BASE):
     __tablename__="SESSIONDATA"

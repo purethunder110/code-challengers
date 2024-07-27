@@ -1,15 +1,11 @@
 from fastapi import FastAPI,Request
-from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
-from fastapi.staticfiles import StaticFiles
+from . import app,templates
 #import uuid
 
 
-app= FastAPI()
+
 #additional conf variables
-templates=Jinja2Templates(directory="frontend/templates")
-app.mount("/node",StaticFiles(directory="frontend/node_modules/"),name="node_modules")
-app.mount("/static",StaticFiles(directory="frontend/static/"),name="static")
 
 #main coding page
 @app.get("/session/{shareID}",response_class=HTMLResponse)
